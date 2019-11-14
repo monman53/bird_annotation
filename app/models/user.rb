@@ -15,4 +15,8 @@ class User < ApplicationRecord
   #パスワードが一致しているかの確認
   validates :password, confirmation: {message: "とpasswordの値が一致していません"}
 
+  #アソシエーション
+  has_many :pictures
+  has_many :annotaions
+
 end

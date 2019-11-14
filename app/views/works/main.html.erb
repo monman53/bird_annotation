@@ -1,41 +1,33 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-10 col-md-offset-1 border-bottom">
+    <div class="col-10 offset-1 border-bottom">
       <p class="h3">作業者ID :<%= @user_name %></p>
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-md-10 col-md-offset-1">
-      <label>
-          <span class="btn btn-primary">
-            ファイルを選択
-            <input type="file" id="inputfile" accept="image/jpeg,image/png,image/gif,image/bmp,image/x-icon" onchange="onAddFile(event);">
-          </span>
-      </label>
+    <div class="col-10 offset-1">
 
-      <img id="img_source" style="display:none;">
-      <p></p>
       <div class="row card">
-        <div class="col-md-12">
+        <div class="col-12">
           <p>取り込んだ画像</p>
         </div>
-        <div class="col-md-12 pb-2">
+        <div class="col-12 pb-2">
 <!--           <canvas id="SrcCanvas" onmousedown="OnMousedown(event);" onmousemove="OnMousemove(event);" onmouseup="OnMouseup(event);"></canvas> -->
         </div>
       </div>
       <div class="row mt-3 card">
-        <div class="col-md-12">
+        <div class="col-12">
           <p>切り取った画像</p>
         </div>
-        <div class="col-md-12 pb-2">
+        <div class="col-12 pb-2">
           <canvas id="RecCanvas"></canvas>
         </div>
       </div>
       <div class="row mt-3 card">
-        <div class="col-md-12">
+        <div class="col-12">
           <p>進捗</p>
         </div>
-        <div class="col-md-12">
+        <div class="col-12">
             <div class="progress mb-3" style="height: 40px;">
               <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
             </div>
