@@ -1,94 +1,50 @@
 <!-- タブ・メニュー -->
-<!-- <div class="mt-3">
+<div class="mt-3">
   <ul class="nav nav-tabs">
-    <li class="nav-item">
+<!--     <li class="nav-item">
       <a class="nav-link active" href="#sampleContentA" data-toggle="tab">前処理</a>
-    </li>
+    </li> -->
     <li class="nav-item">
-      <a class="nav-link" href="#sampleContentB" data-toggle="tab">割り当て</a>
+      <a class="nav-link active" href="#sampleContentB" data-toggle="tab">割り当て</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#sampleContentC" data-toggle="tab">作業進捗</a>
     </li>
   </ul>
-</div> -->
+</div>
 
 <!-- タブ内容 -->
 
-<!-- <div class="tab-content">
-   <div class="tab-pane" id="sampleContentA">
-       <div class="row">
-          <div class="col-12">
-              <div class="form-group">
-                <label for="text1">Text:</label>
-                <input type="text" id="text1" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="passwd1">Password:</label>
-                <input type="password" id="passwd1" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="textarea1">Textarea:</label>
-                <textarea id="textarea1" class="form-control"></textarea>
-              </div>
-          </div>
-       </div>
-   </div>
+<div class="tab-content">
+   <!-- <div class="tab-pane" id="sampleContentA"> -->
+      <%#= render partial: "preprocess" %>
+   <!-- </div> -->
    <div class="tab-pane active" id="sampleContentB">
-    coming soon...
+      <%= render partial: "allocation",locals: { users: @users }%>
    </div>
    <div class="tab-pane" id="sampleContentC">
-      <div class="row mt-3 card">
-        <div class="col-12">
-          <p>作業者ID : test0</p>
-        </div>
-        <div class="col-12">
-            <div class="progress mb-3" style="height: 40px;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
-            </div>
-        </div>
-      </div>
-      <div class="row mt-3 card">
-        <div class="col-12">
-          <p>作業者ID : test1</p>
-        </div>
-        <div class="col-12">
-            <div class="progress mb-3" style="height: 40px;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
-            </div>
-        </div>
-      </div>
-      <div class="row mt-3 card">
-        <div class="col-12">
-          <p>作業者ID : test2</p>
-        </div>
-        <div class="col-12">
-            <div class="progress mb-3" style="height: 40px;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
-            </div>
-        </div>
-      </div>
+      <%= render partial: "progress" %>
    </div>
-</div> -->
+</div>
 
-<ul class="nav nav-tabs mt-3">
-  <li class="nav-item">
-    <%= link_to "前処理", admins_preprocess_path, class: "nav-link active", id: "preprocess-tab", remote: true %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "割り当て", admins_allocation_path, class: "nav-link", id: "allcation-tab", remote: true %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "進捗", admins_progress_path, class: "nav-link", id: "progress-tab", remote: true %>
-  </li>
-</ul>
+<!-- <ul class="nav nav-tabs mt-3">
+  <li class="nav-item"> -->
+    <%#= link_to "前処理", admins_preprocess_path, class: "nav-link active", id: "preprocess-tab", remote: true %>
+<!--   </li>
+  <li class="nav-item"> -->
+    <%#= link_to "割り当て", admins_allocation_path, class: "nav-link", id: "allcation-tab", remote: true %>
+<!--   </li>
+  <li class="nav-item"> -->
+    <%#= link_to "進捗", admins_progress_path, class: "nav-link", id: "progress-tab", remote: true %>
+<!--   </li>
+</ul> -->
 
 <!-- mypagesの部分テンプレート -->
-<div id="preprocess"></div>
+<!-- <div id="preprocess"></div>
 
 <div id="allocation"></div>
 
-<div id="progress"></div>
+<div id="progress"></div> -->
 
 
 

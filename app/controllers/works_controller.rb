@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
   def main
     @user_name = current_user.name
-    @picture = Picture.new
+    @picture = Picture.all
     # binding.pry
   end
 

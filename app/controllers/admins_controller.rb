@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   def main
+    @users = User.all
   end
 
   #前処理の部分テンプレート
