@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :password, confirmation: {message: "とpasswordの値が一致していません"}
 
   #アソシエーション
-  has_many :pictures
-  has_many :annotaions
+  has_many :allocations
+  has_many :allocation_annotations, through: :allocations, source: 'annotation'
 
 end

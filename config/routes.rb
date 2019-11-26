@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   get 'admins/allocation'
   get 'admins/progress'
 
+  post 'admins/create_allocation'
+
   resources :users
 end

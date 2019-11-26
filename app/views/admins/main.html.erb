@@ -20,7 +20,7 @@
       <%#= render partial: "preprocess" %>
    <!-- </div> -->
    <div class="tab-pane active" id="sampleContentB">
-      <%= render partial: "allocation",locals: { users: @users }%>
+      <%= render partial: "allocation",locals: { users: @users , contents: @contents}%>
    </div>
    <div class="tab-pane" id="sampleContentC">
       <%= render partial: "progress" %>
