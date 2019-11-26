@@ -4,17 +4,19 @@
     <title>BirdAnnotation</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_include_tag "application" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="container">
         <div class="navbar navbar-default bg-primary">
             <% if logged_in? %>
                 <p class="text-white">野鳥アノテーションシステム</p>
-                <%= link_to("マイページ", works_main_path, {class: "nav-item nav-link text-white active"}) %>
+
                 <%= link_to("管理者用", admins_main_path, {class: "nav-item nav-link text-white "}) %>
+                <%= link_to("マイページ", works_main_path, {class: "nav-item nav-link text-white active"}) %>
                 <%= link_to("ログアウト", logout_path, { method: :delete, class: "nav-item nav-link text-white"}) %>
             <% else %>
                 <p class="text-white">野鳥アノテーションシステム</p>

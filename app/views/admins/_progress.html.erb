@@ -1,36 +1,10 @@
-
-<!--   <div class="card mt-3">
-    <div class="col-10 offset-1">
-      <p>作業者ID : test0</p>
-    </div>
-    <div class="col-10 offset-1">
-        <div class="progress mb-3" style="height: 40px;">
-          <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
-        </div>
-    </div>
-  </div> -->
+<% progress.each do |pro| %>
 
   <div class=" col-10 offset-1 card mt-3">
-      <p class="mt-3">作業者ID : test0</p>
+      <p class="mt-3">作業者ID : <%= pro[0] %></p>
       <div class="progress mb-3" style="height: 40px;">
-        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:<%= pro[1]%>%;"><%= pro[1]%>%</div>
       </div>
   </div>
-  <div class=" col-10 offset-1 card mt-3">
-      <p class="mt-3">作業者ID : test0</p>
-      <div class="progress mb-3" style="height: 40px;">
-        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
-      </div>
-  </div>
-  <div class=" col-10 offset-1 card mt-3">
-      <p class="mt-3">作業者ID : test0</p>
-      <div class="progress mb-3" style="height: 40px;">
-        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
-      </div>
-  </div>
-  <div class=" col-10 offset-1 card mt-3">
-      <p class="mt-3">作業者ID : test0</p>
-      <div class="progress mb-3" style="height: 40px;">
-        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">25%</div>
-      </div>
-  </div>
+
+<% end %>

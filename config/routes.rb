@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   #部分テンプレートの部分
-  get 'admins/preprocess'
-  get 'admins/allocation'
-  get 'admins/progress'
+  # get 'admins/preprocess'
+  # get 'admins/allocation'
+  # get 'admins/progress'
 
+  #割り当てしたときのrouting
   post 'admins/create_allocation'
 
   resources :users

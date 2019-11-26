@@ -10,3 +10,67 @@
 }
 
 
+#conmenu{
+  width:130px;
+  background-color:#f0f0f0;
+  border:1px solid #999999;
+  padding:0px 5px;
+  display:none;
+  position:fixed;
+}
+
+#conmenu.on{
+  display:block;
+}
+
+#conmenu ul{
+  list-style:none;
+  margin:0px;
+  padding:5px;
+}
+#area{
+  width:400px;
+  height:200px;
+  background-color:#ddddff;
+}
+
+#inputfile{
+  display:none;
+}
+
+.relative {
+    position: relative;
+    width: 300px;
+}
+.absolute {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+.target {
+/*  min-width: 50px;
+  min-height: 50px;*/
+  border-width: 2px;
+  border-style: solid;
+  border-color: red;
+}
+
+.drag-and-drop {
+    cursor: move;
+    position: absolute;
+    z-index: 1000;
+}
+
+.drag {
+    z-index: 1001;
+}
+
+#red-box {
+    top: 0;
+    left: 0;
+    background-color: #f48fb1;
+}
+
+
+

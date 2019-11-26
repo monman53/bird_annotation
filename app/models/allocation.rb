@@ -3,7 +3,6 @@ class Allocation < ApplicationRecord
     validates :annotation_id, presence: true
 
     belongs_to :user
-    has_many :annotations
-
-
+    belongs_to :annotation
+    # has_many :annotations
 end

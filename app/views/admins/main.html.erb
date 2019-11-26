@@ -23,7 +23,8 @@
       <%= render partial: "allocation",locals: { users: @users , contents: @contents}%>
    </div>
    <div class="tab-pane" id="sampleContentC">
-      <%= render partial: "progress" %>
+      <%= render partial: "progress", locals: {progress: @progress} %>
+      <%#= render partial: "progress",locals: { users: @users , contents: @contents}%>
    </div>
 </div>
 
