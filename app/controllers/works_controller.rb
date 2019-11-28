@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  # include gon
+
   def main
     # @user_name = current_user.name
 
@@ -10,7 +12,10 @@ class WorksController < ApplicationController
       @user_state = [0]
     else
       user_state = allos.select{|i| i.state == 2 }[0]
+      #jsのオブジェクトに変換
+
       @user_state = [user_state.id, user_state.path, user_state.information]
+      # gon.location = @user_state[2]
     end
 
     # for allo in allos
