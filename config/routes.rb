@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'works/main'
+
+  post 'works/action'
+
+
+
+
   get 'admins/main'
 
   get '/login', to: 'sessions#new'
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
 
   #割り当てしたときのrouting
   post 'admins/create_allocation'
+
 
   resources :users
 end

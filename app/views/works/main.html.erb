@@ -1,225 +1,298 @@
 <div class="container">
-  <div class="row mt-5">
+<!--   <div class="row mt-5">
     <div class="col-10 offset-1 border-bottom">
       <p class="h3">作業者ID :<%= @progress[0] %></p>
     </div>
-  </div>
+  </div> -->
+
   <div class="row mt-3">
     <div class="col-10 offset-1">
+      <div class="row card" style="min-height:400px">
+          <% if @count == 0 %>
+              <p class="h5 mt-3 ml-2">作業画像が割り当てられていません</p>
+          <% else %>
+              <div class="col-12 mt-3">
+                <p class="h5">作業画像</p>
+              </div>
 
-<!--       <div class="row card">
-        <div class="col-12">
-          <p>取り込んだ画像</p>
-        </div>
-        <div class="col-12 pb-2">
-          <canvas id="SrcCanvas" onmousedown="OnMousedown(event);" onmousemove="OnMousemove(event);" onmouseup="OnMouseup(event);"></canvas>
-        </div>
-      </div> -->
-      <div class="row card">
-        <div class="col-12 mt-3">
-          <p class="h5">作業画像</p>
-        </div>
-        <div class="col-12 pb-2">
-          <div class="col-12 pb-2 relative" id="BaseDiv">
-
-              <%#= image_tag @user_state[1], id: "img_area" %>
-            <canvas id="canvas">
-            </canvas>
-          </div>
-
-
-          <%# @user_state.each do |pic| %>
-              <%#= image_tag pic[1] %>
-          <%# end %>
-<!--           <canvas id="RecCanvas">
-              <%# @user_state.each do |pic| %>
-                  <%#= image_tag pic[1] %>
-              <%# end %>
-          </canvas> -->
-        </div>
-        <div class="row mb-3">
-            <div class="col-10 ml-5">
-                <div class="row">
-                    <div class="col-2 mx-auto">
-                      <!-- 拡大 -->
-                      <a href="#" onclick="zoomInImage();return false;" class="btn btn-outline-primary mr-2">
-                          <i class="fas fa-plus"></i>
-                      </a>
-                      <a href="#" onclick="zoomOutImage();return false;" class="btn btn-outline-primary">
+              <div class="row">
+                <div class="col-6 ml-4 mt-2">
+                    <a class="btn btn-outline-primary text-primary" href="#" onclick="zoomOutImage();return false;">
                         <i class="fas fa-minus"></i>
-                      </a>
-                    </div>
-                    <div class="col-2 mx-auto">
-                      <a class="btn btn-primary btn-block text-white">bard</a>
-                    </div>
-                    <div class="col-2 mx-auto">
-                      <a class="btn btn-primary btn-block text-white">non-bard</a>
-                    </div>
-                    <div class="col-2 mx-auto">
-                      <a class="btn btn-primary btn-block text-white">unknown</a>
-                    </div>
-                    <div class="col-2 mx-auto">
-                      <a class="btn btn-outline-primary btn-block text-primary">引き直す</a>
-                    </div>
+                    </a>
+                    <a class="btn btn-outline-primary text-primary ml-3" href="#" onclick="zoomInImage();return false;">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </div>
-            </div>
-        </div>
-      </div>
+              </div>
 
+              <div class="col-12 pb-2">
+                <div class="col-12 pb-2 relative" id="BaseDiv">
+
+                    <%= image_tag @user_state[1], id: "img_area" %>
+      <!--             <canvas id="canvas">
+                  </canvas> -->
+      <!--             <div id="image">
+                  </div> -->
+                </div>
+              </div>
+<!--               <div class="row">
+                  <div class="col-10 offset-1">
+                      <div class="slider">
+                          <span>縮小</span>
+                          <input id="zoom-slider" type="range">
+                          <span>拡大</span>
+                      </div>
+                  </div>
+              </div> -->
+              <div class="row mb-3">
+                  <div class="col-8 ml-5">
+                      <div class="row">
+                          <div class="col-3 mx-auto">
+                              <%#= button_to 'bard', { controller: 'works', action: 'action' }, { method: :post , params: {judege: 1, img_id:@user_state[0], info:@user_state[2]}, class: "btn btn-primary btn-block text-white", remote: true} %>
+
+                              <%= button_to 'bird', {controller: 'works', action: 'action' }, { method: :post , params: {judege: 1, img_id:@user_state[0], info:@user_state[2]}, class: "btn btn-primary btn-block text-white", id: "enter1"} %>
+                              <p> Z-button </p>
+                          </div>
+                          <div class="col-3 mx-auto">
+                              <%= button_to 'non-bard', { controller: 'works', action: 'action' }, { method: :post , params: {judege: 2, img_id:@user_state[0], info:@user_state[2]}, class: "btn btn-primary btn-block text-white", onkeypress: "enter2();"} %>
+                              <p> X-button </p>
+                          </div>
+                          <div class="col-3 mx-auto">
+                              <%= button_to 'unKnown', { controller: 'works', action: 'action' }, { method: :post , params: {judege: 3, img_id:@user_state[0], info:@user_state[2]}, class: "btn btn-primary btn-block text-white", onkeypress: "enter3();"}%>
+                              <p> C-button </p>
+                          </div>
+                          <div class="col-3 mx-auto">
+                              <%#= button_to '引き直す', { controller: 'works', action: 'action' }, { method: :post , params: {judege: 3, img_id:@user_state[0], info:@user_state[2]}, class: "btn btn-outline-primary btn-block text-primary"}%>
+                          </div>
+
+                          <div class="col-3 mx-auto">
+                            <a class="btn btn-outline-primary btn-block text-primary" href="#" onclick="deleterec();return false;">引き直す</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          <% end %>
+      </div>
 
       <div class="row mt-3 card">
         <div class="col-12 mt-3">
           <p class="h5">進捗</p>
         </div>
         <div class="col-12">
-            <div class="progress mb-3" style="height: 40px;">
+            <div class="progress mb-3" style="height: 30px;">
               <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:<%= @progress[1]%>%;"><%= @progress[1]%>%</div>
             </div>
         </div>
       </div>
+
       <!-- タブの中身 -->
-      <div id="conmenu" class="card conmenu" style="display:none;, position:fixed;">
+<!--       <div id="conmenu" class="card conmenu" style="display:none;, position:fixed;">
         <form name="test">
             <input class="btn btn-primary btn-block mt-2" type="button" name="yahoo" value="Bird" onClick="kakunin(1)">
             <input class="btn btn-primary btn-block mt-2" type="button" name="google" value="Non-bird" onClick="kakunin(2)">
             <input class="btn btn-primary btn-block mt-2 mb-2" type="button" name="google" value="UnKnown" onClick="kakunin(3)">
             <input class="btn btn-primary btn-block mt-2 mb-2" type="button" name="google" value="削除" onClick="kakunin(4)">
         </form>
-      </div>
+      </div> -->
 
     </div>
   </div>
 </div>
 
+<% if @count!=0 %>
 <script>
 // キャンバス
 
-window.onload = function () {
-  const canvas = document.getElementById("canvas");
-  // const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  // document.body.appendChild(canvas);
+// window.onload = function () {
+//   const canvas = document.getElementById("canvas");
+//   // const canvas = document.createElement('canvas');
+//   const ctx = canvas.getContext('2d');
+//   // document.body.appendChild(canvas);
 
-  console.log("canvas",canvas)
+//   console.log("canvas",canvas)
 
-  const img = new Image();
-  img.src = ' <%= asset_path @user_state[1] %>';
+//   const img = new Image();
+//   img.src = ' <%#= asset_path @user_state[1] %>';
 
-  img.onload = () => {
-    // Canvasを画像のサイズに合わせる
-    canvas.height = img.height;
-    canvas.width  = img.width;
+//   img.onload = () => {
+//     // Canvasを画像のサイズに合わせる
+//     canvas.height = img.height;
+//     canvas.width  = img.width;
 
-    // Canvasに描画する
-    ctx.drawImage(img, 0, 0);
-  };
+//     // Canvasに描画する
+//     ctx.drawImage(img, 0, 0);
+//   };
 
-  img.onerror = () => {
-    console.log('画像の読み込み失敗');
-  };
+//   img.onerror = () => {
+//     console.log('画像の読み込み失敗');
+//   };
+// }
+
+// console.log(window.event.keyCode);
+
+function enter1(){
+    console.log(event.keyCode);
+   // 左
+   if( window.event.keyCode == 122 ){
+     console.log("左");
+  //    document.form1.submit();
+   }
+}
+
+function enter2(){
+   //上
+   if( window.event.keyCode == 13 ){
+     console.log("上");
+     // document.form1.submit();
+   }
+}
+
+function enter3(){
+   //右
+   if( window.event.keyCode == 99 ){
+     console.log("右");
+  //    document.form1.submit();
+   }
+}
+
+//ボタンを押したら短形を削除する
+function deleterec(){
+  var elements = document.getElementsByClassName('target');
+  elements.parentNode.removeChild(elements);
+}
+
+function addRect(element, location){
+  //追加する要素を定義する
+  var recDiv = document.createElement('div');
+  recDiv.style.position = "absolute";
+
+  //アノテーションの枠の位置の設定
+  leftPos= location[0];//X
+  topPos = location[1];//Y
+  recSizeH = location[2];//H
+  recSizeW = location[3];//W
+  recDiv.style.left = (leftPos+15)+"px";
+  recDiv.style.top = topPos+"px";
+  recDiv.style.minHeight = recSizeH+"px";
+  recDiv.style.minWidth = recSizeW+"px";
+  recDiv.style.maxHeight = recSizeH+"px";
+  recDiv.style.maxWidth = recSizeW+"px";
+  recDiv.style.borderWidth = "2px";
+  recDiv.style.borderStyle = "solid";
+  recDiv.style.borderColor = "red";
+  recDiv.classList.add("target");
+  recDiv.classList.add("drag-and-drop");
+  element.appendChild(recDiv);
+}
+
+
+function zoomInImage(){
+  //画像オブジェクトを取得する
+  var obj = document.images['img_area'];
+
+  var currentHeight = obj.height;
+
+  //画像の高さを２倍にする
+  obj.height = currentHeight * 2 ;
+
+  // var elements = document.getElementsByClassName('target');
+
+  // console.log("elements", elements)
+
+  // var nowLeft = Math.round(elements.style.left*2);
+  // var nowTop = Math.round(elements.style.left*2);
+  // var nowMinHeight = Math.round(elements.style.left*2);
+  // var nowMinWidth = Math.round(elements.style.left*2);
+  // var nowMaxHeight = Math.round(elements.style.left*2);
+  // var nowMaxWidth = Math.round(elements.style.left*2);
+
+  // elements.style.left = (nowLeft+15)+"px";
+  // elements.style.top = nowTop+"px";
+  // elements.style.minHeight = nowMinHeight+"px";
+  // elements.style.minWidth = nowMinWidth+"px";
+  // elements.style.maxHeight = nowMaxHeight+"px";
+  // elements.style.maxWidth = nowMaxWidth+"px";
+
+}
+
+function zoomOutImage(){
+  //画像オブジェクトを取得する
+  var obj = document.images['img_area'];
+  var currentHeight = obj.height;
+
+  //画像の高さを２倍にする
+  obj.height = currentHeight / 2 ;
+
+  //短形の位置の補正
+  var elements = document.getElementsByClassName('target');
+
+  // var nowLeft = Math.round(elements.style.left/2);
+  // var nowTop = Math.round(elements.style.left/2);
+  // var nowMinHeight = Math.round(elements.style.left/2);
+  // var nowMinWidth = Math.round(elements.style.left/2);
+  // var nowMaxHeight = Math.round(elements.style.left/2);
+  // var nowMaxWidth = Math.round(elements.style.left/2);
+
+  // elements.style.left = (nowLeft+15)+"px";
+  // elements.style.top = nowTop+"px";
+  // elements.style.minHeight = nowMinHeight+"px";
+  // elements.style.minWidth = nowMinWidth+"px";
+  // elements.style.maxHeight = nowMaxHeight+"px";
+  // elements.style.maxWidth = nowMaxWidth+"px";
+
 }
 
 
 
+window.onload = function () {
+
+
+//キーボード入力を可能にする関数
+    document.getElementById("enter1").addEventListener('keydown',function(){
+        console.log("---------")
+        console.log(event.keyCode);
+    });
+
+    var image = document.getElementById("img_area");
+
+    var width = image.naturalWidth ;
+    var height = image.naturalHeight ;
+
+    var base = document.getElementById("BaseDiv");
+    var location = [<%= @user_state[2][0..-3] %>];
+
+    // image.style.clip = 'rect( 50px, 300px, 150px, 20px )';
+    // image.style.position = "absolute";
+
+    addRect(base,location);
+    moveShape()
 
 
 
+  // // クリック時にタブを表示する設定
+  // // body = document.body;
+  // menu = document.getElementById('conmenu');
+  // console.log("menu", menu)
 
+  // //右クリック時に独自コンテキストメニューを表示する
+  // image.addEventListener('contextmenu',function(e){
 
+  //   menu.style.display = "block";
+  // // src_canvas.addEventListener('contextmenu',function(e){
+  //   menu.style.left = e.pageX + 'px';
+  //   menu.style.top = e.pageY + 'px';
+  //   menu.classList.add('on');
+  // });
 
+  // //左クリック時に独自コンテキストメニューを非表示にする
+  // image.addEventListener('click',function(){
+  //   if(menu.classList.contains('on')){
+  //     menu.classList.remove('on');
+  //   }
+  // });
 
-
-
-
-
-
-
-
-// function addRect(element, location){
-//   //追加する要素を定義する
-//   var recDiv = document.createElement('div');
-//   recDiv.style.position = "absolute";
-
-//   //アノテーションの枠の位置の設定
-//   leftPos= location[0];//X
-//   topPos = location[1];//Y
-//   recSizeH = location[2];//H
-//   recSizeW = location[3];//W
-//   recDiv.style.left = (leftPos+15)+"px";
-//   recDiv.style.top = topPos+"px";
-//   recDiv.style.minHeight = recSizeH+"px";
-//   recDiv.style.minWidth = recSizeW+"px";
-//   recDiv.style.maxHeight = recSizeH+"px";
-//   recDiv.style.maxWidth = recSizeW+"px";
-//   recDiv.style.borderWidth = "2px";
-//   recDiv.style.borderStyle = "solid";
-//   recDiv.style.borderColor = "red";
-//   recDiv.classList.add("target");
-//   recDiv.classList.add("drag-and-drop");
-//   element.appendChild(recDiv);
-// }
-
-
-// function zoomInImage(){
-//   //画像オブジェクトを取得する
-//   var obj = document.images['img_area'];
-
-//   var currentHeight = obj.height;
-
-//   //画像の高さを２倍にする
-//   obj.height = currentHeight * 2 ;
-// }
-
-// function zoomOutImage(){
-//   //画像オブジェクトを取得する
-//   var obj = document.images['img_area'];
-
-//   var currentHeight = obj.height;
-
-//   //画像の高さを２倍にする
-//   obj.height = currentHeight / 2 ;
-// }
-
-
-
-// window.onload = function () {
-
-//   // moveShape()
-//   var image = document.getElementById("img_area");
-
-//   var width = image.naturalWidth ;
-//   var height = image.naturalHeight ;
-
-//   var base = document.getElementById("BaseDiv");
-//   var location = [];
-<%#= @user_state[2][0..-3] %>
-//   addRect(base,location);
-
-//   // クリック時にタブを表示する設定
-//   // body = document.body;
-//   menu = document.getElementById('conmenu');
-//   console.log("menu", menu)
-
-//   //右クリック時に独自コンテキストメニューを表示する
-//   image.addEventListener('contextmenu',function(e){
-
-//     menu.style.display = "block";
-//   // src_canvas.addEventListener('contextmenu',function(e){
-//     menu.style.left = e.pageX + 'px';
-//     menu.style.top = e.pageY + 'px';
-//     menu.classList.add('on');
-//   });
-
-//   //左クリック時に独自コンテキストメニューを非表示にする
-//   image.addEventListener('click',function(){
-//     if(menu.classList.contains('on')){
-//       menu.classList.remove('on');
-//     }
-//   });
-
-//   moveShape()
-
-// }
+}
 
 // アノテーションによる選別
 // function kakunin(btnNo){
@@ -232,86 +305,86 @@ window.onload = function () {
 //   }
 // }
 
-// function moveShape(){
+function moveShape(){
 
-//     //要素の取得
-//     var elements = document.getElementsByClassName("drag-and-drop");
+    //要素の取得
+    var elements = document.getElementsByClassName("drag-and-drop");
 
-//     //要素内のクリックされた位置を取得するグローバル（のような）変数
-//     var x;
-//     var y;
+    //要素内のクリックされた位置を取得するグローバル（のような）変数
+    var x;
+    var y;
 
-//     //マウスが要素内で押されたとき、又はタッチされたとき発火
-//     for(var i = 0; i < elements.length; i++) {
-//         elements[i].addEventListener("mousedown", mdown, false);
-//         elements[i].addEventListener("touchstart", mdown, false);
-//     }
+    //マウスが要素内で押されたとき、又はタッチされたとき発火
+    for(var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("mousedown", mdown, false);
+        elements[i].addEventListener("touchstart", mdown, false);
+    }
 
-//     //マウスが押された際の関数
-//     function mdown(e) {
+    //マウスが押された際の関数
+    function mdown(e) {
 
-//         //クラス名に .drag を追加
-//         this.classList.add("drag");
+        //クラス名に .drag を追加
+        this.classList.add("drag");
 
-//         //タッチデイベントとマウスのイベントの差異を吸収
-//         if(e.type === "mousedown") {
-//             var event = e;
-//         } else {
-//             var event = e.changedTouches[0];
-//         }
+        //タッチデイベントとマウスのイベントの差異を吸収
+        if(e.type === "mousedown") {
+            var event = e;
+        } else {
+            var event = e.changedTouches[0];
+        }
 
-//         //要素内の相対座標を取得
-//         x = event.pageX - this.offsetLeft;
-//         y = event.pageY - this.offsetTop;
+        //要素内の相対座標を取得
+        x = event.pageX - this.offsetLeft;
+        y = event.pageY - this.offsetTop;
 
-//         //ムーブイベントにコールバック
-//         document.body.addEventListener("mousemove", mmove, false);
-//         document.body.addEventListener("touchmove", mmove, false);
-//     }
+        //ムーブイベントにコールバック
+        document.body.addEventListener("mousemove", mmove, false);
+        document.body.addEventListener("touchmove", mmove, false);
+    }
 
-//     //マウスカーソルが動いたときに発火
-//     function mmove(e) {
+    //マウスカーソルが動いたときに発火
+    function mmove(e) {
 
-//         //ドラッグしている要素を取得
-//         var drag = document.getElementsByClassName("drag")[0];
+        //ドラッグしている要素を取得
+        var drag = document.getElementsByClassName("drag")[0];
 
-//         //同様にマウスとタッチの差異を吸収
-//         if(e.type === "mousemove") {
-//             var event = e;
-//         } else {
-//             var event = e.changedTouches[0];
-//         }
+        //同様にマウスとタッチの差異を吸収
+        if(e.type === "mousemove") {
+            var event = e;
+        } else {
+            var event = e.changedTouches[0];
+        }
 
-//         //フリックしたときに画面を動かさないようにデフォルト動作を抑制
-//         e.preventDefault();
+        //フリックしたときに画面を動かさないようにデフォルト動作を抑制
+        e.preventDefault();
 
-//         //マウスが動いた場所に要素を動かす
-//         drag.style.top = event.pageY - y + "px";
-//         drag.style.left = event.pageX - x + "px";
+        //マウスが動いた場所に要素を動かす
+        drag.style.top = event.pageY - y + "px";
+        drag.style.left = event.pageX - x + "px";
 
-//         //マウスボタンが離されたとき、またはカーソルが外れたとき発火
-//         drag.addEventListener("mouseup", mup, false);
-//         document.body.addEventListener("mouseleave", mup, false);
-//         drag.addEventListener("touchend", mup, false);
-//         document.body.addEventListener("touchleave", mup, false);
+        //マウスボタンが離されたとき、またはカーソルが外れたとき発火
+        drag.addEventListener("mouseup", mup, false);
+        document.body.addEventListener("mouseleave", mup, false);
+        drag.addEventListener("touchend", mup, false);
+        document.body.addEventListener("touchleave", mup, false);
 
-//     }
+    }
 
-//     //マウスボタンが上がったら発火
-//     function mup(e) {
-//         var drag = document.getElementsByClassName("drag")[0];
+    //マウスボタンが上がったら発火
+    function mup(e) {
+        var drag = document.getElementsByClassName("drag")[0];
 
-//         //ムーブベントハンドラの消去
-//         document.body.removeEventListener("mousemove", mmove, false);
-//         drag.removeEventListener("mouseup", mup, false);
-//         document.body.removeEventListener("touchmove", mmove, false);
-//         drag.removeEventListener("touchend", mup, false);
+        //ムーブベントハンドラの消去
+        document.body.removeEventListener("mousemove", mmove, false);
+        drag.removeEventListener("mouseup", mup, false);
+        document.body.removeEventListener("touchmove", mmove, false);
+        drag.removeEventListener("touchend", mup, false);
 
-//         //クラス名 .drag も消す
-//         drag.classList.remove("drag");
-//     }
+        //クラス名 .drag も消す
+        drag.classList.remove("drag");
+    }
 
-// }
+}
 
 // // ユーザーによりファイルが追加された
 // function onAddFile(event) {
@@ -368,5 +441,198 @@ window.onload = function () {
 //   }
 // }
 
+
+/////////////////////////////////////////////////////////////
+////// 拡大縮小・ドラックアンドドロップ
+/////////////////////////////////////////////////////////////
+// class ImageEditor {
+//   /**
+//    * Canvas操作
+//    * @param {Object} opt
+//    * @param {string} opt.imageSrc イメージのURL
+//    * @param {string} opt.canvasId canvasタグのid（デフォルト: image-for-edit)
+//    * @param {Number} opt.canvasSize canvasのサイズ(デフォルト: 128px)
+//    * @param {Number} opt.scaleStep 拡大縮小の倍率(デフォルト: 0.25)
+//    */
+//   constructor(opt = {}) {
+//     this.src = opt.imageSrc;
+//     this.id = opt.canvasId || 'image-for-edit';
+//     // this.size = opt.canvasSize || 128;
+//     // this.width =  opt.Width;
+//     // this.height = opt.Height;
+//     this.scaleStep = opt.scaleStep || 0.25;
+
+//     this.scale = 1;
+//     this.dragInfo = {
+//       isDragging: false,
+//       startX: 0,
+//       startY: 0,
+//       diffX: 0,
+//       diffY: 0,
+//       canvasX: 0,
+//       canvasY: 0
+//     };
+//   }
+
+//   /**
+//    * canvasを挿入する
+//    * @param {HTMLElement} el canvasを挿入する親要素
+//    * @return {void}
+//    */
+//   insertTo(el) {
+//     const container = document.createElement('div');
+//     el.appendChild(container);
+
+//     // slider
+//     const zoomSlider = document.createElement('input');
+//     zoomSlider.type = 'range';
+//     zoomSlider.min = 0.01;
+//     zoomSlider.max = 2;
+//     zoomSlider.value = 1;
+//     zoomSlider.step = 'any';
+//     zoomSlider.addEventListener('input', this.zoom.bind(this));
+//     container.appendChild(zoomSlider);
+
+//     // canvas
+//     this.canvas = document.createElement('canvas');
+//     this.ctx = this.canvas.getContext('2d');
+
+//     this.canvas.id = this.id;
+//     // this.canvas.width =  this.width;
+//     // this.canvas.height = this.height;
+
+//     this.img = new Image();
+//     this.img.crossOrigin = 'anonymous';   // 「Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported.」というエラーになるため
+//     this.img.src = this.src;
+
+//     this.img.onload = () => {
+//       //canvasの大きさをimgの大きさに合わせる
+//       this.canvas.height = this.img.height;
+//       this.canvas.width  = this.img.width;
+//       this.ctx.drawImage(this.img, 0, 0);
+//     };
+//     this.img.onerror = e => {
+//       [...el.children].forEach(a => a.remove());
+//       alert('画像読み込み失敗');
+//     };
+
+//     // mouse event
+//     this.canvas.addEventListener('mousedown', this.dragStart.bind(this));
+//     this.canvas.addEventListener('mousemove', this.drag.bind(this));
+//     this.canvas.addEventListener('mouseup', this.dragEnd.bind(this));
+
+//     el.appendChild(this.canvas);
+//   }
+
+//   /**
+//    * 再描画する
+//    * @private
+//    * @return {void}
+//    */
+//   _redraw() {
+//     // canvasをクリア
+//     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+//     // リサイズ
+//     this.ctx.scale(this.scale, this.scale);
+//     // 再描画
+//     this.ctx.drawImage(this.img, this.dragInfo.diffX, this.dragInfo.diffY);
+//     // 変形マトリクスを元に戻す
+//     this.ctx.scale(1 / this.scale, 1 / this.scale);
+//   }
+
+//   /**
+//    * 拡大/縮小する
+//    * @param {Event} event イベント
+//    * @return {void}
+//    */
+//   zoom(event) {
+//     this.scale = event.target.value;
+//     this._redraw();
+//   }
+
+//   /**
+//    * 拡大（ズームイン）する
+//    * @return {void}
+//    */
+//   zoomIn() {
+//     this.scale += this.scaleStep;
+//     this._redraw();
+//   }
+//   /**
+//    * 縮小（ズームアウト）する
+//    * @return {void}
+//    */
+//   zoomOut() {
+//     this.scale -= this.scaleStep;
+//     this._redraw();
+//   }
+
+//   /**
+//    * ドラッグ開始
+//    * @param {MouseEvent} event マウスイベント
+//    * @return {void}
+//    */
+//   dragStart(event) {
+//     this.dragInfo.isDragging = true;
+//     this.dragInfo.startX = event.clientX;
+//     this.dragInfo.startY = event.clientY;
+//   }
+//   /**
+//    * ドラッグで画像を移動する
+//    * @param {MouseEvent} event マウスイベント
+//    * @return {void}
+//    */
+//   drag(event) {
+//     if (this.dragInfo.isDragging) {
+//       // 開始位置 + 差分 / スケール （画像の大きさによる移動距離の補正のためスケールで割る）
+//       this.dragInfo.diffX = this.dragInfo.canvasX + (event.clientX - this.dragInfo.startX) / this.scale;
+//       this.dragInfo.diffY = this.dragInfo.canvasY + (event.clientY - this.dragInfo.startY) / this.scale;
+
+//       this._redraw();
+//     }
+//   }
+//   /**
+//    * ドラッグ終了
+//    * @param {MouseEvent} event マウスイベント
+//    * @return {void}
+//    */
+//   dragEnd(event) {
+//     this.dragInfo.isDragging = false;
+//     // mousedown時のカクつきをなくすため
+//     this.dragInfo.canvasX = this.dragInfo.diffX;
+//     this.dragInfo.canvasY = this.dragInfo.diffY;
+//   }
+
+//   /**
+//    * canvasを出力する
+//    * @return {Canvas}
+//    */
+//   getCanvas() {
+//     return this.canvas;
+//   }
+
+//   /**
+//    * imgを出力する
+//    * @return {Image}
+//    */
+//   getImage() {
+//     const img = new Image();
+//     const data = this.canvas.toDataURL('image/png');
+//     img.src = data;
+
+//     return img;
+//   }
+
+// }
+
+
+// const imageEditor = new ImageEditor({
+//   imageSrc: ' <%#= asset_path @user_state[1] %> '
+//   // Width: 640,
+//   // Height: 360
+// });
+// imageEditor.insertTo(document.getElementById('image'));
+
 </script>
+<% end %>
 
